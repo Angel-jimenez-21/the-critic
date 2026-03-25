@@ -51,7 +51,7 @@ data/the-critic.db
 
 Ese archivo no se sube al repositorio porque esta ignorado en `.gitignore`.
 
-## Funcionalidades que ya se pueden probar
+## Funcionalidades hasta el momento
 
 - Crear una cuenta nueva
 - Iniciar sesion
@@ -67,4 +67,4 @@ Ese archivo no se sube al repositorio porque esta ignorado en `.gitignore`.
 
 ## Nota
 
-Este proyecto fue preparado como avance escolar. Algunas secciones del sitio siguen siendo estaticas y se iran conectando al backend en siguientes etapas.
+Este proyecto representa el avance actual de la aplicación web. Por ahora ya cuenta con funciones básicas como registro, inicio de sesión, perfil de usuario y publicación de reseñas. Algunas secciones todavía siguen estáticas, pero la idea es irlas conectando al backend en las siguientes etapas del desarrollo.
