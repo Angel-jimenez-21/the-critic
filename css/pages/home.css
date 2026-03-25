@@ -1,0 +1,58 @@
+.hero {
+  margin-top: 90px;
+}
+
+.section-title {
+  margin-bottom: 50px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.section-title--left {
+  text-align: left;
+}
+
+.featured-games {
+  margin-top: 230px;
+}
+
+.recent-reviews {
+  margin-top: 230px;
+}
+
+.recent-reviews .carousel {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.recent-reviews .carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.news-section {
+  margin-top: 230px;
+}
+
+.cta {
+  margin: 230px auto 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 352px;
+}
+
+.cta-text h2 {
+  font-size: 48px;
+}
+
+.cta .btn-primary {
+  font-size: 18px;
+}
+
+.cta-image img {
+  border-radius: 20px;
+  display: block;
+  width: 433px;
+  height: 561px;
+  object-fit: cover;
+}

@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+data/the-critic.db
+*.log
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal

@@ -1,0 +1,54 @@
+.about-hero {
+  padding: 140px 0 60px;
+  text-align: center;
+}
+
+.about-hero h1 {
+  font-size: 36px;
+  font-weight: 600;
+  font-family: var(--font-title);
+  margin: 0;
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 80px auto 0;
+  max-width: 724px;
+}
+
+.about-card {
+  max-width: 724px;
+}
+
+.about-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: var(--font-title);
+}
+
+.about-card p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  line-height: 1.5;
+}
+
+.about-card--right {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.about-values {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+}

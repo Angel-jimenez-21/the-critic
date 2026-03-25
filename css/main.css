@@ -1,0 +1,14 @@
+@import "./reset.css";
+@import "./variables.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./pages/home.css";
+@import "./pages/games.css";
+@import "./pages/news.css";
+@import "./pages/about.css";
+@import "./pages/login.css";
+@import "./pages/register.css";
+@import "./pages/profile.css";
+@import "./pages/game-detail.css";
+@import "./pages/news-detail.css";

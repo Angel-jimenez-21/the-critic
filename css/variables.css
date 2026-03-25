@@ -1,0 +1,12 @@
+:root {
+  --bg-main: #131313;
+  --bg-card: #1a1a1a;
+  --text-main: #ffffff;
+  --text-muted: #b3b3b3;
+
+  --font-title: 'Poppins', sans-serif;
+  --font-text: 'Raleway', sans-serif;
+  --font-logo: 'Silkscreen', sans-serif;
+
+  --container-width: 1200px;
+}

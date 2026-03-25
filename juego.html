@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft | The Critic</title>
+
+  <!-- Tipografias -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Raleway:wght@400;500&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav container">
+      <span class="logo">THE CRITIC</span>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a class="is-active" href="videojuegos.html">Videojuegos</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+      </ul>
+
+      <div class="nav-auth">
+        <a href="login.html">Iniciar sesion</a> /
+        <a href="register.html">Registrarse</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="game-detail" data-game-slug="minecraft-java-edition">
+      <div class="container game-detail__top">
+        <div class="game-detail__info">
+          <a class="back-link" href="videojuegos.html">←</a>
+          <h1 class="game-detail__title">MINECRAFT: Java Edition</h1>
+          <div class="game-card__rating">
+            <div class="rating-bars">
+              <span class="rating-bar is-filled"></span>
+              <span class="rating-bar is-filled"></span>
+              <span class="rating-bar is-filled"></span>
+              <span class="rating-bar is-filled"></span>
+              <span class="rating-bar is-filled"></span>
+            </div>
+            <span>5</span>
+          </div>
+          <div class="game-detail__meta">Genero: Sandbox, Survival<br>Plataforma: PC</div>
+          <p class="game-detail__desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco
+          </p>
+          <button class="btn-primary review-trigger" type="button" data-review-open>
+            Añade tu reseña
+          </button>
+        </div>
+        <img class="game-detail__image" src="assets/img/minecraft.png" alt="Minecraft">
+      </div>
+
+      <div class="container reviews-section">
+        <h2 class="reviews-title">Reseñas</h2>
+        <div class="reviews-filters">
+          <select class="filter-select" aria-label="Ordenar reseñas">
+            <option selected>Mas reciente</option>
+            <option>Mas antiguas</option>
+            <option>Mejor puntuacion</option>
+            <option>Peor puntuacion</option>
+          </select>
+          <select class="filter-select" aria-label="Filtrar por puntuacion">
+            <option selected>Puntuacion</option>
+            <option>5</option>
+            <option>4+</option>
+            <option>3+</option>
+            <option>2+</option>
+          </select>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="review-post__rating-main">
+                  <div class="rating-bars">
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                    <span class="rating-bar is-filled"></span>
+                  </div>
+                  <span>5</span>
+                </div>
+                <p class="review-post__date">24.03.2026</p>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+
+          <article class="review-post">
+            <div class="review-post__top">
+              <div class="review-post__user">
+                <img class="review-post__avatar" src="assets/img/cta.png" alt="Avatar">
+                <div>
+                  <p class="review-post__name">Joe Pino</p>
+                  <p class="review-post__game">Minecraft</p>
+                </div>
+              </div>
+              <div class="review-post__rating">
+                <div class="rating-bars">
+                  <span class="rating-bar is-filled"></span>
+                  <span class="rating-bar is-filled"></span>
+                  <span class="rating-bar is-filled"></span>
+                  <span class="rating-bar is-filled"></span>
+                  <span class="rating-bar is-filled"></span>
+                </div>
+                <span>5</span>
+              </div>
+            </div>
+            <p class="review-post__text">
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+              totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
+              sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+          </article>
+        </div>
+
+        <div class="pagination reviews-pagination">
+          <a href="#">&lt;</a>
+          <a class="is-active" href="#">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <span>4...120</span>
+          <a href="#">&gt;</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="review-modal" data-review-modal hidden>
+      <button class="review-modal__backdrop" type="button" aria-label="Cerrar ventana" data-review-close></button>
+
+      <div class="review-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="review-modal-title">
+        <button class="review-modal__close" type="button" aria-label="Cerrar" data-review-close>×</button>
+
+        <form class="review-form" data-review-form>
+          <h2 class="review-form__title" id="review-modal-title">Escribe tu reseña</h2>
+          <p class="review-form__subtitle">
+            Juego: <span data-review-game-name>Minecraft: Java Edition</span>
+          </p>
+
+          <fieldset class="review-form__group">
+            <legend class="review-form__label">¿Qué calificación le das?</legend>
+
+            <div class="review-score" aria-label="Selecciona una puntuación">
+              <button class="review-score__bar is-active" type="button" data-score-value="1" aria-label="1 punto"></button>
+              <button class="review-score__bar is-active" type="button" data-score-value="2" aria-label="2 puntos"></button>
+              <button class="review-score__bar is-active" type="button" data-score-value="3" aria-label="3 puntos"></button>
+              <button class="review-score__bar is-active" type="button" data-score-value="4" aria-label="4 puntos"></button>
+              <button class="review-score__bar is-active" type="button" data-score-value="5" aria-label="5 puntos"></button>
+            </div>
+
+            <input type="hidden" name="rating" value="5">
+          </fieldset>
+
+          <label class="review-form__label" for="review-comment">
+            Ahora sí, ¿Qué te gustaría decir del juego?
+          </label>
+          <textarea
+            class="review-form__textarea"
+            id="review-comment"
+            name="comment"
+            placeholder="Escribe aquí tu comentario..."
+            rows="5"
+            required
+          ></textarea>
+
+          <button class="btn-primary review-form__submit" type="submit">Publicar reseña</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-top">
+        <span class="logo">THE CRITIC</span>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="videojuegos.html">Videojuegos</a></li>
+          <li><a href="noticias.html">Noticias</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="login.html">Iniciar sesion</a></li>
+          <li><a href="register.html">Registrarse</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 The Critic</span>
+        <a href="#">Politica de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

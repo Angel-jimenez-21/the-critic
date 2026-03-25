@@ -1,0 +1,24 @@
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: auto;
+  padding: 0 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

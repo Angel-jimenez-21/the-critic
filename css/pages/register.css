@@ -1,0 +1,88 @@
+.register-section {
+  padding: 60px 0 120px;
+}
+
+.register-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 120px;
+}
+
+.register-title {
+  font-size: 36px;
+  font-weight: 600;
+  font-family: var(--font-title);
+  margin: 0 0 24px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+}
+
+.register-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+  font-family: var(--font-text);
+}
+
+.register-input {
+  width: 360px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: #2a2a2a;
+  color: var(--text-main);
+  padding: 0 18px;
+  font-family: var(--font-text);
+  font-size: 14px;
+}
+
+.register-input::placeholder {
+  color: var(--text-muted);
+}
+
+.register-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  margin: 6px 0 10px;
+}
+
+.register-button {
+  width: 260px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: #000;
+  font-family: var(--font-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.register-login {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-text);
+}
+
+.register-login a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.register-image {
+  width: 662px;
+  height: 719px;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+}
