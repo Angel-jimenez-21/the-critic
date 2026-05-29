@@ -1,0 +1,533 @@
+/* responsive.css
+   Media queries para hacer el sitio funcionar bien en tablets y celulares
+   Uso dos puntos de corte (breakpoints):
+     - 980px o menos → tablet (iPad, etc)
+     - 640px o menos → movil (telefono)
+   La idea es que en escritorio no se aplica nada de aqui */
+
+/* --- HAMBURGUESA Y DRAWER -------------------------------------------------
+   El boton hamburguesa y el drawer (menu de pantalla completa) estan
+   definidos aqui siempre, pero en escritorio el hamburguesa esta oculto
+   y el drawer no se muestra. En tablet/movil se activan con JS */
+
+/* boton hamburguesa — en escritorio esta oculto con display:none */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 210;
+}
+
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+  transform-origin: center;
+}
+
+/* cuando el menu esta abierto, las tres lineas se convierten en una X
+   la primera y tercera barra rotan 45 grados, la del medio desaparece */
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* drawer — el menu de pantalla completa que sale en movil
+   empieza oculto y con opacidad 0, la clase is-open lo hace visible
+   esto se controla desde main.js al hacer clic en la hamburguesa */
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background: #000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.22s, transform 0.22s;
+  pointer-events: none;
+}
+
+.nav-drawer.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+/* Links del drawer */
+.nav-drawer__links,
+.nav-drawer__auth {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-drawer__links li,
+.nav-drawer__auth li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.nav-drawer__links a,
+.nav-drawer__auth a,
+.nav-drawer__logout {
+  display: block;
+  padding: 18px 24px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: color 0.15s;
+}
+
+.nav-drawer__links a:hover,
+.nav-drawer__auth a:hover,
+.nav-drawer__logout:hover {
+  color: var(--text-muted);
+}
+
+/* Separador entre links de nav y auth */
+.nav-drawer__auth {
+  margin-top: 8px;
+  border-top: 1px solid #333;
+  width: 100%;
+}
+
+.nav-drawer__auth li {
+  border-bottom: 1px solid #1a1a1a;
+}
+
+/* cuando el drawer esta abierto bloqueamos el scroll del body para que
+   el usuario no pueda scrollear el contenido de atras mientras navega el menu */
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* ============================================================================
+   TABLET — pantallas de 980px o menos (iPad, tablets en general)
+   ============================================================================ */
+@media (max-width: 980px) {
+
+  /* header y navegacion */
+  .header {
+    height: 60px;
+  }
+
+  .header .nav {
+    height: 60px;
+  }
+
+  /* Ocultar menú y auth de escritorio */
+  .nav-menu,
+  .nav-auth {
+    display: none;
+  }
+
+  /* Mostrar hamburguesa */
+  .nav-hamburger {
+    display: flex;
+  }
+
+  /* Mostrar drawer cuando está abierto */
+  .nav-drawer.is-open {
+    display: flex;
+    padding-top: 60px;
+  }
+
+  /* ── Home ─────────────────────────────────────────────── */
+  .hero {
+    flex-direction: column;
+    gap: 40px;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .hero-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .featured-games,
+  .recent-reviews,
+  .news-section {
+    margin-top: 80px;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 40px;
+    margin: 80px auto 60px;
+    text-align: center;
+  }
+
+  .cta-text h2 {
+    font-size: 32px;
+  }
+
+  .cta-image img {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  /* ── Juegos ───────────────────────────────────────────── */
+  .games-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .games-search input {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  /* ── Noticias ─────────────────────────────────────────── */
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .news-search input {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  /* ── Login / Register ─────────────────────────────────── */
+  .login-layout,
+  .register-layout {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .login-image,
+  .register-image {
+    display: none;
+  }
+
+  /* ── Detalle de noticia ───────────────────────────────── */
+  .news-detail__title {
+    font-size: 34px;
+  }
+
+  .news-detail__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* ── Admin ────────────────────────────────────────────── */
+  .admin-form__row--half {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-main {
+    padding-top: 1.5rem;
+  }
+
+  .admin-form-box {
+    padding: 1.25rem;
+  }
+}
+
+/* ============================================================================
+   MOVIL — pantallas de 640px o menos (telefonos)
+   ============================================================================ */
+@media (max-width: 640px) {
+
+  /* nav */
+  .nav-menu {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .nav-auth {
+    font-size: 14px;
+  }
+
+  /* ── Hero ─────────────────────────────────────────────── */
+  .hero {
+    padding: 40px 0;
+    margin-top: 0;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .featured-games,
+  .recent-reviews,
+  .news-section {
+    margin-top: 60px;
+  }
+
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+
+  .cta {
+    margin: 60px auto 40px;
+  }
+
+  .cta-text h2 {
+    font-size: 24px;
+  }
+
+  .cta-image {
+    display: none;
+  }
+
+  /* ── Juegos ───────────────────────────────────────────── */
+  .games-hero {
+    padding: 80px 0 40px;
+  }
+
+  .games-hero h1 {
+    font-size: 28px;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .game-card {
+    flex: unset;
+    width: 100%;
+    max-width: 340px;
+    align-items: flex-start;
+  }
+
+  .game-card__image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  /* Barra de búsqueda: input crece, botón queda a la par */
+  .games-search input {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .games-filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ── Noticias ─────────────────────────────────────────── */
+  .news-hero {
+    padding: 80px 0 40px;
+  }
+
+  .news-hero h1 {
+    font-size: 28px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Barra de búsqueda noticias: input crece, botón queda a la par */
+  .news-search input {
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .news-filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* ── Login / Register ─────────────────────────────────── */
+  .login-section,
+  .register-section {
+    padding: 40px 0 80px;
+  }
+
+  .login-title,
+  .register-title {
+    font-size: 28px;
+  }
+
+  .login-input,
+  .register-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .login-form,
+  .register-form {
+    width: 100%;
+    max-width: none;
+  }
+
+  .login-button,
+  .register-button {
+    width: 100%;
+  }
+
+  /* ── Detalle de noticia ───────────────────────────────── */
+  .news-detail {
+    padding: 80px 0 80px;
+  }
+
+  .news-detail__title {
+    font-size: 26px;
+    margin-top: 48px;
+  }
+
+  .news-detail__back {
+    position: static;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .news-detail__header {
+    text-align: left;
+  }
+
+  .news-detail__content {
+    max-width: none;
+  }
+
+  /* ── Nosotros ─────────────────────────────────────────── */
+  .about-hero {
+    padding: 80px 0 40px;
+  }
+
+  .about-hero h1 {
+    font-size: 28px;
+  }
+
+  /* ── Footer ───────────────────────────────────────────── */
+  .footer {
+    padding: 50px 0 40px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ── Perfil ───────────────────────────────────────────── */
+  .profile-actions {
+    margin-top: 32px;
+  }
+
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-photo-block {
+    align-self: center;
+  }
+
+  /* ── Admin ────────────────────────────────────────────── */
+
+  /* evita que la tabla (que es ancha) cause scroll horizontal en toda la pagina */
+  .admin-main {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  .admin-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    word-break: break-word; /* por si el titulo no cabe en una linea */
+  }
+
+  .admin-tabs {
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .admin-tab {
+    padding: 0.55rem 1rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  .admin-panel__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .admin-panel__header .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .admin-form-box {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  /* la tabla scrollea dentro de su caja, no desborda la pagina */
+  .admin-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
+    border-radius: 16px;
+  }
+
+  .admin-table {
+    font-size: 0.8rem;
+    min-width: 480px; /* minimo para que las columnas no queden aplastadas */
+  }
+
+  .admin-table thead th,
+  .admin-table td {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .admin-form__actions {
+    flex-direction: column;
+  }
+
+  .admin-form__actions .btn-primary,
+  .admin-form__actions .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+}

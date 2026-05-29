@@ -67,6 +67,28 @@
   margin: 60px auto 80px;
 }
 
+.games-results {
+  margin: 48px auto -24px;
+  font-family: var(--font-title);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.games-empty {
+  grid-column: 1 / -1;
+  padding: 70px 20px;
+  border-radius: 24px;
+  background: #171717;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  text-align: center;
+}
+
+.game-card__image {
+  background-position: center;
+  background-size: cover;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

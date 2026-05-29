@@ -1,14 +1,21 @@
-@import "./reset.css";
-@import "./variables.css";
-@import "./base.css";
-@import "./layout.css";
-@import "./components.css";
-@import "./pages/home.css";
-@import "./pages/games.css";
-@import "./pages/news.css";
-@import "./pages/about.css";
-@import "./pages/login.css";
-@import "./pages/register.css";
-@import "./pages/profile.css";
-@import "./pages/game-detail.css";
-@import "./pages/news-detail.css";
+/* main.css
+   Archivo principal de estilos — desde aqui se importa todo lo demas
+   El orden importa: variables primero, luego base, luego componentes, luego paginas, luego responsive
+   El responsive va al final para que pueda sobreescribir cualquier cosa de los archivos anteriores */
+
+@import "./reset.css";        /* elimina los estilos por defecto del browser */
+@import "./variables.css";    /* colores, fuentes y tamaños reutilizables */
+@import "./base.css";         /* estilos globales del body, links, etc */
+@import "./layout.css";       /* header, nav, footer y contenedor .container */
+@import "./components.css";   /* botones, tarjetas, barras de rating, carrusel */
+@import "./pages/home.css";   /* hero y secciones del inicio */
+@import "./pages/games.css";  /* catalogo de videojuegos */
+@import "./pages/news.css";   /* lista de noticias */
+@import "./pages/about.css";  /* pagina nosotros */
+@import "./pages/login.css";  /* formulario de login */
+@import "./pages/register.css"; /* formulario de registro */
+@import "./pages/profile.css";  /* perfil del usuario */
+@import "./pages/game-detail.css"; /* detalle de un juego y sus reseñas */
+@import "./pages/news-detail.css"; /* articulo de noticia completo */
+@import "./pages/terms.css";       /* pagina de terminos y condiciones */
+@import "./responsive.css";   /* media queries para tablet y movil — siempre al final */

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrarse | The Critic</title>
 
   <!-- Tipografias -->
@@ -15,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <nav class="nav container">
-      <span class="logo">THE CRITIC</span>
+      <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
 
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
@@ -28,8 +29,18 @@
         <a href="login.html">Iniciar sesion</a> /
         <a class="is-active" href="register.html">Registrarse</a>
       </div>
+      <button class="nav-hamburger" data-nav-toggle aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </nav>
-  </header>
+    <div class="nav-drawer" data-nav-drawer>
+    <ul class="nav-drawer__links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="videojuegos.html">Videojuegos</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <ul class="nav-drawer__auth" data-nav-mobile-auth></ul>
+  </div>
+</header>
 
   <main>
     <section class="register-section">
@@ -44,13 +55,32 @@
             <input id="email" class="register-input" name="email" type="email" placeholder="Correo electronico" required>
 
             <label class="register-label" for="password">Contraseña</label>
-            <input id="password" class="register-input" name="password" type="password" placeholder="Contraseña" required>
+            <div class="pass-wrap">
+              <input id="password" class="register-input" name="password" type="password" placeholder="Contraseña" required>
+              <button type="button" class="btn-show-pass" aria-label="Mostrar contraseña">
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                
+              </button>
+            </div>
 
-            <input id="confirm" class="register-input" name="confirmPassword" type="password" placeholder="Confirmar contraseña" required>
+            <ul class="password-rules" id="password-rules" hidden>
+              <li class="password-rule" data-rule="length">Al menos 8 caracteres</li>
+              <li class="password-rule" data-rule="upper">Al menos una mayúscula (A-Z)</li>
+              <li class="password-rule" data-rule="number">Al menos un número (0-9)</li>
+              <li class="password-rule" data-rule="special">Al menos un carácter especial (!@#$%...)</li>
+            </ul>
+
+            <div class="pass-wrap">
+              <input id="confirm" class="register-input" name="confirmPassword" type="password" placeholder="Confirmar contraseña" required>
+              <button type="button" class="btn-show-pass" aria-label="Mostrar contraseña">
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                
+              </button>
+            </div>
 
             <label class="register-checkbox">
               <input name="terms" type="checkbox" required>
-              <span>Acepto términos y politica de privacidad</span>
+              <span>Acepto los <a class="terms-link" href="terminos.html" target="_blank">términos y condiciones</a></span>
             </label>
 
             <button class="register-button" type="submit">Crear cuenta</button>
@@ -66,7 +96,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-top">
-        <span class="logo">THE CRITIC</span>
+        <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
         <ul class="footer-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="videojuegos.html">Videojuegos</a></li>
@@ -78,7 +108,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 The Critic</span>
-        <a href="#">Politica de privacidad</a>
+        <a href="terminos.html">Términos y condiciones</a>
       </div>
     </div>
   </footer>

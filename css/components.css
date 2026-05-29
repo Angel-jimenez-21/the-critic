@@ -1,3 +1,44 @@
+/* boton de mostrar/ocultar contraseña — se usa en login y register */
+.pass-wrap {
+  position: relative;
+}
+
+.btn-show-pass {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.btn-show-pass:hover {
+  color: var(--text-main);
+}
+
+.btn-show-pass svg {
+  width: 18px;
+  height: 18px;
+  /* el icono se cambia via JS (innerHTML del SVG), no con display:none/block
+     asi no hay conflictos de especificidad CSS */
+}
+
+/* link dentro del checkbox de terminos */
+.terms-link {
+  color: var(--text-main);
+  text-underline-offset: 2px;
+}
+
+.terms-link:hover {
+  color: var(--text-muted);
+}
+
 .btn-primary {
   padding: 12px 20px;
   border-radius: 999px;
@@ -135,6 +176,12 @@
   font-size: 30px;
 }
 
+/* Logo como enlace sin estilos de link */
+.logo-link {
+  color: inherit;
+  text-decoration: none;
+}
+
 .hero-text h1 {
   font-size: 48px;
 }
@@ -164,6 +211,8 @@
   height: 380px;
   background: var(--bg-card);
   border-radius: 20px;
+  display: block;
+  object-fit: cover;
 }
 
 .game-card__title {
@@ -282,6 +331,8 @@
   height: 238px;
   border-radius: 10px;
   background: var(--bg-card);
+  display: block;
+  object-fit: cover;
 }
 
 .news-card__title {
@@ -289,6 +340,15 @@
   font-size: 18px;
   font-weight: 600;
   text-align: left;
+}
+
+.news-card__meta {
+  margin: -4px 0 0;
+  font-family: var(--font-text);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
 }
 
 .news-card__desc {

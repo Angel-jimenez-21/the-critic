@@ -2,9 +2,12 @@
   "name": "the-critic",
   "version": "1.0.0",
   "private": true,
-  "description": "Proyecto escolar de reseñas de videojuegos con backend Node y SQLite.",
+  "description": "Proyecto escolar de reseñas de videojuegos con backend Node y MariaDB.",
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.22.2"
   }
 }

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noticias | The Critic</title>
 
   <!-- Tipografias -->
@@ -15,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <nav class="nav container">
-      <span class="logo">THE CRITIC</span>
+      <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
 
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
@@ -28,15 +29,25 @@
         <a href="login.html">Iniciar sesion</a> /
         <a href="register.html">Registrarse</a>
       </div>
+      <button class="nav-hamburger" data-nav-toggle aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </nav>
-  </header>
+    <div class="nav-drawer" data-nav-drawer>
+    <ul class="nav-drawer__links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="videojuegos.html">Videojuegos</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <ul class="nav-drawer__auth" data-nav-mobile-auth></ul>
+  </div>
+</header>
 
   <main>
     <section class="news-hero">
       <div class="container">
         <h1>Actualidad del<br>mundo gamer</h1>
         <div class="news-search">
-          <input type="text" placeholder="¿Qué noticia buscas?">
+          <input data-news-search type="text" placeholder="¿Qué noticia buscas?">
           <button class="search-button" aria-label="Buscar">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
               <circle cx="11" cy="11" r="7"></circle>
@@ -50,75 +61,23 @@
             <option>Hoy</option>
             <option>Esta semana</option>
             <option>Este mes</option>
-            <option>Este ano</option>
+            <option>Este año</option>
           </select>
-          <select class="filter-select" aria-label="Filtrar por seccion">
-            <option selected>Seccion</option>
-            <option>Lanzamientos</option>
-            <option>Actualizaciones</option>
-            <option>Esports</option>
-            <option>Industria</option>
+          <select class="filter-select" data-news-category aria-label="Filtrar por seccion">
+            <option value="" selected>Sección</option>
+            <option value="industria">Industria</option>
+            <option value="lanzamiento">Lanzamiento</option>
+            <option value="esports">Esports</option>
+            <option value="retro">Retro</option>
+            <option value="opinión">Opinión</option>
+            <option value="mundial">Mundial</option>
           </select>
         </div>
       </div>
     </section>
 
     <section class="news-list">
-      <div class="news-grid container">
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Tercera guerra mundial antes de GTA VI</h3>
-          <p class="news-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit amet, consectetur eu fugiat,Lorem ipsum dolor sit</p>
-        </article>
-      </div>
-
-      <div class="pagination">
-        <a href="#">&lt;</a>
-        <a class="is-active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <span>4...120</span>
-        <a href="#">&gt;</a>
+      <div class="news-grid container" data-news-grid>
       </div>
     </section>
   </main>
@@ -127,7 +86,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-top">
-        <span class="logo">THE CRITIC</span>
+        <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
         <ul class="footer-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="videojuegos.html">Videojuegos</a></li>
@@ -139,7 +98,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 The Critic</span>
-        <a href="#">Politica de privacidad</a>
+        <a href="terminos.html">Términos y condiciones</a>
       </div>
     </div>
   </footer>

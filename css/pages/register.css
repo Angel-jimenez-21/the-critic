@@ -30,6 +30,11 @@
   font-family: var(--font-text);
 }
 
+/* wrapper de contraseña — mismo ancho que el resto del form */
+.register-form .pass-wrap {
+  width: 360px;
+}
+
 .register-input {
   width: 360px;
   height: 40px;
@@ -37,9 +42,15 @@
   border: none;
   background: #2a2a2a;
   color: var(--text-main);
-  padding: 0 18px;
+  padding: 0 46px 0 18px; /* padding-right extra para que el texto no tape el ojo */
   font-family: var(--font-text);
   font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* cuando el input esta dentro del wrapper, ocupa todo el ancho del wrapper */
+.pass-wrap .register-input {
+  width: 100%;
 }
 
 .register-input::placeholder {
@@ -77,6 +88,41 @@
 .register-login a {
   color: var(--text-main);
   text-decoration: none;
+}
+
+.password-rules {
+  list-style: none;
+  padding: 10px 14px;
+  margin: 0;
+  background: #1e1e1e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.password-rule {
+  font-size: 12px;
+  font-family: var(--font-text);
+  color: var(--text-muted);
+  padding-left: 18px;
+  position: relative;
+}
+
+.password-rule::before {
+  content: '✗';
+  position: absolute;
+  left: 0;
+  color: #e05555;
+}
+
+.password-rule.is-valid {
+  color: var(--text-main);
+}
+
+.password-rule.is-valid::before {
+  content: '✓';
+  color: #4caf50;
 }
 
 .register-image {

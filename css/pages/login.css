@@ -23,6 +23,11 @@
   max-width: 360px;
 }
 
+/* el wrapper hereda el ancho del form y el input llena el 100% */
+.login-form .pass-wrap {
+  width: 360px;
+}
+
 .login-input {
   width: 360px;
   height: 40px;
@@ -30,14 +35,91 @@
   border: none;
   background: #2a2a2a;
   color: var(--text-main);
-  padding: 0 18px;
+  padding: 0 46px 0 18px; /* padding-right extra para que el texto no tape el ojo */
   font-family: var(--font-text);
   font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* cuando el input esta dentro del wrapper, que ocupe todo el ancho del wrapper */
+.pass-wrap .login-input {
+  width: 100%;
 }
 
 .login-input::placeholder {
   color: var(--text-muted);
 }
+
+/* caja del mini-formulario de recuperacion de contraseña */
+.login-forgot-box {
+  background: #1a1a1a;
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-forgot-label {
+  font-family: var(--font-text);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* fila con el input de email y el boton de enviar */
+.login-forgot-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.login-forgot-row .login-input {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+
+/* clase utilitaria — oculta un elemento sin inline style (evita problemas de CSP) */
+.hidden {
+  display: none !important;
+}
+
+/* estilos de la pagina reset-password */
+.reset-error-msg {
+  color: #e05555;
+  font-family: var(--font-text);
+  font-size: 13px;
+}
+
+.reset-info-msg {
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.reset-back-btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.reset-back-link {
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  font-size: 13px;
+}
+
+.login-forgot-msg-text {
+  font-size: 12px;
+  font-family: var(--font-text);
+  margin-top: 4px;
+}
+
+.forgot-msg-ok    { color: #4caf50; }
+.forgot-msg-error { color: #e05555; }
 
 .login-forgot {
   text-align: right;

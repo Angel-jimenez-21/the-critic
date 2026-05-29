@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Critic</title>
 
   <!-- Tipografías -->
@@ -15,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <nav class="nav container">
-      <span class="logo">THE CRITIC</span>
+      <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
 
       <ul class="nav-menu">
         <li><a class="is-active" href="index.html">Inicio</a></li>
@@ -28,8 +29,18 @@
         <a href="login.html">Iniciar sesión</a> /
         <a href="register.html">Registrarse</a>
       </div>
+      <button class="nav-hamburger" data-nav-toggle aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </nav>
-  </header>
+    <div class="nav-drawer" data-nav-drawer>
+    <ul class="nav-drawer__links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="videojuegos.html">Videojuegos</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <ul class="nav-drawer__auth" data-nav-mobile-auth></ul>
+  </div>
+</header>
 
   <main>
 
@@ -38,7 +49,7 @@
       <div class="hero-text">
         <h1>Reseñas honestas<br>de videojuegos</h1>
         <p>Opiniones reales de jugadores reales.</p>
-        <button class="btn-primary">
+        <button class="btn-primary" data-hero-explore>
           Explorar reseñas / Ver videojuegos
         </button>
       </div>
@@ -52,182 +63,28 @@
     <section class="carousel-section featured-games">
       <h2 class="section-title container">Videojuegos destacados</h2>
 
-      <div class="carousel">
-        <!-- Cards -->
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada del juego"></div>
-          <h3 class="game-card__title">Juego destacado</h3>
-          <p class="game-card__desc">Una aventura intensa con combates tacticos y exploracion profunda.</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada del juego"></div>
-          <h3 class="game-card__title">Juego destacado</h3>
-          <p class="game-card__desc">Mundo abierto con narrativa fuerte y misiones secundarias memorables.</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada del juego"></div>
-          <h3 class="game-card__title">Juego destacado</h3>
-          <p class="game-card__desc">Estrategia en tiempo real con alta dificultad y gran rejugabilidad.</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>3</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada del juego"></div>
-          <h3 class="game-card__title">Juego destacado</h3>
-          <p class="game-card__desc">Accion cooperativa con una estetica retro y jefes desafiantes.</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-      </div>
+      <div class="carousel" data-home-games></div>
     </section>
 
     <!-- RESEÑAS RECIENTES -->
     <section class="carousel-section recent-reviews">
       <h2 class="section-title section-title--left container">Reseñas recientes</h2>
 
-      <div class="carousel">
-        <article class="review-card">
-          <div class="review-card__top">
-            <div>
-              <h3 class="review-card__name">Ana Ramirez</h3>
-              <p class="review-card__game">Horizon Echoes</p>
-            </div>
-            <div class="review-card__rating">
-              <div class="rating-bars">
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-              </div>
-              <span>5</span>
-            </div>
-          </div>
-          <p class="review-card__desc">
-            Una experiencia visual preciosa con misiones que se sienten frescas. El combate
-            recompensa la exploracion y el ritmo de la historia mantiene la tension sin caer.
-          </p>
-        </article>
-        <article class="review-card">
-          <div class="review-card__top">
-            <div>
-              <h3 class="review-card__name">Luis Torres</h3>
-              <p class="review-card__game">Steel Rift</p>
-            </div>
-            <div class="review-card__rating">
-              <div class="rating-bars">
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar"></span>
-              </div>
-              <span>4</span>
-            </div>
-          </div>
-          <p class="review-card__desc">
-            Buen equilibrio entre estrategia y accion. Los escenarios son variados y los jefes
-            ofrecen un reto real. La musica y el disenio son top.
-          </p>
-        </article>
-        <article class="review-card">
-          <div class="review-card__top">
-            <div>
-              <h3 class="review-card__name">Mariana Cruz</h3>
-              <p class="review-card__game">Pixel Saga</p>
-            </div>
-            <div class="review-card__rating">
-              <div class="rating-bars">
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar is-filled"></span>
-                <span class="rating-bar"></span>
-                <span class="rating-bar"></span>
-              </div>
-              <span>3</span>
-            </div>
-          </div>
-          <p class="review-card__desc">
-            Tiene buenas ideas y una estetica retro cuidada, pero algunas misiones se sienten
-            repetitivas. Aun asi, vale la pena por su narrativa.
-          </p>
-        </article>
-      </div>
+      <div class="carousel" data-home-reviews></div>
     </section>
 
     <!-- NOTICIAS -->
     <section class="carousel-section news-section">
       <h2 class="section-title section-title--left container">Noticias</h2>
 
-      <div class="carousel">
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Lanzamiento sorpresa en consolas</h3>
-          <p class="news-card__desc">
-            El nuevo titulo llega con mejoras de rendimiento y contenido extra. La comunidad
-            destaca la optimizacion y los nuevos modos cooperativos integrados en esta version.
-          </p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Actualizacion mayor de temporada</h3>
-          <p class="news-card__desc">
-            La temporada incluye eventos limitados, recompensas exclusivas y un ajuste al balance
-            competitivo. Ademas, se anuncian nuevas zonas para explorar.
-          </p>
-        </article>
-        <article class="news-card">
-          <div class="news-card__image" role="img" aria-label="Imagen de la noticia"></div>
-          <h3 class="news-card__title">Estudio anuncia su proximo proyecto</h3>
-          <p class="news-card__desc">
-            Con un enfoque narrativo mas ambicioso, el equipo promete una experiencia inmersiva
-            que combinara accion y decisiones con consecuencias.
-          </p>
-        </article>
-      </div>
+      <div class="carousel" data-home-news></div>
     </section>
 
     <!-- CTA FINAL -->
     <section class="cta container">
       <div class="cta-text">
         <h2>¿Quieres opinar sobre tus juegos favoritos?</h2>
-        <button class="btn-primary" onclick="window.location.href='register.html'">
+        <button class="btn-primary" data-cta-register>
           Crear una cuenta / Iniciar sesión
         </button>
       </div>
@@ -243,7 +100,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-top">
-        <span class="logo">THE CRITIC</span>
+        <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
         <ul class="footer-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="videojuegos.html">Videojuegos</a></li>
@@ -255,7 +112,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 The Critic</span>
-        <a href="#">Politica de privacidad</a>
+        <a href="terminos.html">Términos y condiciones</a>
       </div>
     </div>
   </footer>

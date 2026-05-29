@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Videojuegos | The Critic</title>
 
   <!-- Tipografias -->
@@ -15,7 +16,7 @@
   <!-- HEADER -->
   <header class="header">
     <nav class="nav container">
-      <span class="logo">THE CRITIC</span>
+      <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
 
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
@@ -28,15 +29,25 @@
         <a href="login.html">Iniciar sesion</a> /
         <a href="register.html">Registrarse</a>
       </div>
+      <button class="nav-hamburger" data-nav-toggle aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </nav>
-  </header>
+    <div class="nav-drawer" data-nav-drawer>
+    <ul class="nav-drawer__links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="videojuegos.html">Videojuegos</a></li>
+      <li><a href="noticias.html">Noticias</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+    </ul>
+    <ul class="nav-drawer__auth" data-nav-mobile-auth></ul>
+  </div>
+</header>
 
   <main>
     <section class="games-hero">
       <div class="container">
         <h1>Explora y reseña<br>videojuegos</h1>
         <div class="games-search">
-          <input type="text" placeholder="¿Qué juego estás buscando?">
+          <input data-games-search type="text" placeholder="¿Qué juego estás buscando?">
           <button class="search-button" aria-label="Buscar">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
               <circle cx="11" cy="11" r="7"></circle>
@@ -45,289 +56,41 @@
           </button>
         </div>
         <div class="games-filters">
-          <select class="filter-select" aria-label="Filtrar por genero">
-            <option selected>Genero</option>
-            <option>Accion</option>
-            <option>Aventura</option>
-            <option>RPG</option>
-            <option>Estrategia</option>
-            <option>Indie</option>
+          <select class="filter-select" data-games-genre aria-label="Filtrar por genero">
+            <option value="" selected>Genero</option>
+            <option value="Accion">Accion</option>
+            <option value="Aventura">Aventura</option>
+            <option value="RPG">RPG</option>
+            <option value="Estrategia">Estrategia</option>
+            <option value="Indie">Indie</option>
+            <option value="Sandbox">Sandbox</option>
           </select>
-          <select class="filter-select" aria-label="Filtrar por plataforma">
-            <option selected>Plataforma</option>
-            <option>PC</option>
-            <option>PlayStation</option>
-            <option>Xbox</option>
-            <option>Switch</option>
-            <option>Mobile</option>
+          <select class="filter-select" data-games-platform aria-label="Filtrar por plataforma">
+            <option value="" selected>Plataforma</option>
+            <option value="PC">PC</option>
+            <option value="PlayStation">PlayStation</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Switch">Switch</option>
+            <option value="Mobile">Mobile</option>
           </select>
-          <select class="filter-select" aria-label="Filtrar por puntuacion">
-            <option selected>Puntuacion</option>
-            <option>5</option>
-            <option>4+</option>
-            <option>3+</option>
-            <option>2+</option>
-            <option>1+</option>
+          <select class="filter-select" data-games-rating aria-label="Filtrar por puntuacion">
+            <option value="" selected>Puntuacion</option>
+            <option value="5">5</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+            <option value="2">2+</option>
+            <option value="1">1+</option>
           </select>
         </div>
       </div>
     </section>
 
     <section class="games-list">
-      <div class="games-grid container">
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Minecraft"></div>
-          <h3 class="game-card__title">Minecraft</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Terraria"></div>
-          <h3 class="game-card__title">Terraria</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Call of Duty"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Warzone"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Minecraft"></div>
-          <h3 class="game-card__title">Minecraft</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Terraria"></div>
-          <h3 class="game-card__title">Terraria</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Call of Duty"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Warzone"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Minecraft"></div>
-          <h3 class="game-card__title">Minecraft</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Terraria"></div>
-          <h3 class="game-card__title">Terraria</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Call of Duty"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Warzone"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Minecraft"></div>
-          <h3 class="game-card__title">Minecraft</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Terraria"></div>
-          <h3 class="game-card__title">Terraria</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar"></span>
-            </div>
-            <span>4</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Call of Duty"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
-        <article class="game-card">
-          <div class="game-card__image" role="img" aria-label="Portada de Warzone"></div>
-          <h3 class="game-card__title">Lorem Ipsum</h3>
-          <p class="game-card__desc">Lorem ipsum dolor sit amet, consectetur eu fugiat nu...</p>
-          <div class="game-card__rating">
-            <div class="rating-bars">
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-              <span class="rating-bar is-filled"></span>
-            </div>
-            <span>5</span>
-          </div>
-        </article>
+      <p class="games-results container" data-games-results>Buscando videojuegos...</p>
+      <div class="games-grid container" data-games-grid>
       </div>
 
-      <div class="pagination">
-        <a href="#">&lt;</a>
-        <a class="is-active" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <span>4...120</span>
-        <a href="#">&gt;</a>
-      </div>
+      <div class="pagination" data-games-pagination hidden></div>
     </section>
   </main>
 
@@ -335,7 +98,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-top">
-        <span class="logo">THE CRITIC</span>
+        <a class="logo-link" href="index.html"><span class="logo">THE CRITIC</span></a>
         <ul class="footer-links">
           <li><a href="index.html">Inicio</a></li>
           <li><a href="videojuegos.html">Videojuegos</a></li>
@@ -347,7 +110,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 The Critic</span>
-        <a href="#">Politica de privacidad</a>
+        <a href="terminos.html">Términos y condiciones</a>
       </div>
     </div>
   </footer>

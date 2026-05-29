@@ -1,0 +1,400 @@
+/* admin.css
+   Estilos del panel de administracion
+   Se carga SOLO en admin.html — no esta en main.css a proposito para que
+   el fondo negro no afecte al resto del sitio
+   Reutiliza las mismas variables de color y fuente del sitio (--bg-card, --font-title, etc)
+   para que se vea coherente aunque tenga fondo distinto */
+
+/* fondo negro en todo el body de la pagina de admin */
+body {
+  background: #000;
+}
+
+/* ── Layout ───────────────────────────────────────────────────── */
+
+.admin-main {
+  padding-top: 2.5rem;
+  padding-bottom: 5rem;
+  min-height: 80vh;
+}
+
+.admin-title {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Pestañas ─────────────────────────────────────────────────── */
+
+.admin-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.admin-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.admin-tab:hover {
+  color: var(--text-main);
+}
+
+.admin-tab.is-active {
+  color: var(--text-main);
+  border-bottom-color: #fff;
+}
+
+/* ── Cabecera del panel ───────────────────────────────────────── */
+
+.admin-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.admin-panel__header h2 {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ── Formulario ───────────────────────────────────────────────── */
+
+.admin-form-box {
+  background: var(--bg-card);   /* #1a1a1a — igual que las cards del sitio */
+  border-radius: 20px;
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.admin-form-box h3 {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.admin-form__row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.admin-form__row--half {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.admin-form__row label {
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* Inputs de una línea — mismo estilo que .login-input */
+.admin-form__row input[type="text"] {
+  background: #2a2a2a;
+  border: none;
+  border-radius: 999px;
+  color: var(--text-main);
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  height: 40px;
+  padding: 0 18px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: outline 0.15s;
+}
+
+.admin-form__row input[type="text"]:focus {
+  outline: 2px solid #fff;
+  outline-offset: 0;
+}
+
+.admin-form__row input[type="text"]::placeholder {
+  color: var(--text-muted);
+}
+
+/* Textareas y select — esquinas suavizadas, mismo color de fondo */
+.admin-form__row textarea,
+.admin-form__row select {
+  background: #2a2a2a;
+  border: none;
+  border-radius: 12px;
+  color: var(--text-main);
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  padding: 10px 16px;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+  transition: outline 0.15s;
+}
+
+.admin-form__row textarea:focus,
+.admin-form__row select:focus {
+  outline: 2px solid #fff;
+  outline-offset: 0;
+}
+
+.admin-form__row textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.admin-form__row select option {
+  background: #2a2a2a;
+  color: var(--text-main);
+}
+
+/* Logo como link sin estilos de enlace */
+.logo-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Grupo de checkboxes — chips tipo pill */
+.admin-checkgroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+/* Ocultar el checkbox nativo */
+.admin-check input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* El label funciona como el chip visual */
+.admin-check {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  user-select: none;
+}
+
+.admin-check:hover {
+  border-color: #555;
+  color: var(--text-main);
+}
+
+/* Chip activo — clase añadida por JS */
+.admin-check.is-checked {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+  font-weight: 600;
+}
+
+/* Input de archivo */
+.admin-form__row input[type="file"] {
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Vista previa de imagen */
+.admin-image-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.admin-image-preview img {
+  border-radius: 10px;
+  display: block;
+  height: 52px;
+  object-fit: cover;
+  width: 72px;
+}
+
+.admin-image-remove {
+  background: none;
+  border: 1px solid #444;
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.admin-image-remove:hover {
+  border-color: #fff;
+  color: var(--text-main);
+}
+
+/* Acciones del formulario */
+.admin-form__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Botón secundario — mismo radio que .btn-primary, fondo oscuro */
+.btn-secondary {
+  background: #2a2a2a;
+  border: none;
+  border-radius: 999px;
+  color: var(--text-main);
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #3a3a3a;
+}
+
+/* ── Tabla ────────────────────────────────────────────────────── */
+
+.admin-table-wrap {
+  background: var(--bg-card);
+  border-radius: 20px;
+  /* ojo: no ponemos overflow:hidden aqui porque en movil necesitamos overflow-x:auto
+     para que la tabla pueda scrollear horizontalmente sin desbordarse */
+}
+
+.admin-table {
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  width: 100%;
+}
+
+.admin-table thead th {
+  background: #111;
+  color: var(--text-muted);
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.admin-table tbody tr {
+  border-top: 1px solid #222;
+  transition: background 0.15s;
+}
+
+.admin-table tbody tr:hover {
+  background: #111;
+}
+
+.admin-table td {
+  color: var(--text-main);
+  font-family: var(--font-text);
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.admin-table__thumb img {
+  border-radius: 8px;
+  display: block;
+  height: 44px;
+  object-fit: cover;
+  width: 60px;
+}
+
+.admin-table__no-img {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.admin-table__empty {
+  color: var(--text-muted);
+  font-family: var(--font-text);
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.admin-table__empty--error {
+  color: #e05555;
+}
+
+/* Acciones dentro de la tabla */
+.admin-table__actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Botón editar — blanco sobre oscuro, mismo radio pill del sitio */
+.btn-edit {
+  background: #fff;
+  border: none;
+  border-radius: 999px;
+  color: #000;
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  transition: background 0.2s;
+}
+
+.btn-edit:hover {
+  background: #ddd;
+}
+
+/* Botón eliminar — tono rojo apagado, mismo radio */
+.btn-delete {
+  background: #2a1a1a;
+  border: none;
+  border-radius: 999px;
+  color: #e07070;
+  cursor: pointer;
+  font-family: var(--font-text);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-delete:hover {
+  background: #3d1e1e;
+  color: #ff9090;
+}
