@@ -2,7 +2,7 @@
 
 Proyecto escolar de desarrollo web — plataforma de reseñas y noticias de videojuegos.
 
-**Alumno:** Angel Jiménez  
+**Equipo:** Angel de Jesus Jimenez Noh · Novelo Chimal Israel de Jesús · Salazar Iracheta Angel · Gonzalez Carillo Victor Abelardo  
 **Materia:** Desarrollo Web  
 **Entrega:** Mayo 2026  
 **Servidor:** Debian VM en `192.168.64.5`
@@ -11,9 +11,22 @@ Proyecto escolar de desarrollo web — plataforma de reseñas y noticias de vide
 
 ## De que va el proyecto
 
-The Critic es un sitio donde los usuarios pueden registrarse, explorar un catalogo de videojuegos, dejar reseñas con puntuacion del 1 al 5 y leer noticias del mundo gamer. Tambien tiene un panel de administracion para gestionar juegos, noticias y usuarios.
+The Critic es un sitio donde los usuarios pueden registrarse, explorar un catalogo de videojuegos, dejar reseñas con puntuacion del 1 al 5 y leer noticias del mundo gamer. Tambien tiene un panel de administracion para gestionar juegos y noticias.
 
-Lo hice con Node.js puro (sin Express ni nada) para entender bien como funciona un servidor por dentro. El frontend es HTML, CSS y JavaScript vanilla, sin frameworks.
+Construido con Node.js puro (sin Express) para aprender como funciona un servidor por dentro. El frontend es HTML, CSS y JavaScript vanilla, sin frameworks.
+
+---
+
+## Arquitectura MVC
+
+El proyecto sigue el patrón **Modelo-Vista-Controlador** dentro de `server.js`:
+
+| Capa | Qué contiene |
+|---|---|
+| **Model** | Validaciones, seguridad (scrypt), rate limiting, serializadores, helpers de BD, manejo de sesiones |
+| **View** | Archivos HTML, CSS, JS e imágenes servidos estáticamente desde disco |
+| **Controller** | Handlers de cada endpoint `/api/*` organizados por dominio: auth, perfil, juegos, reseñas, admin, noticias |
+| **Router** | Enrutador principal que lee la URL y delega al Controller correcto |
 
 ---
 
@@ -30,25 +43,18 @@ Lo hice con Node.js puro (sin Express ni nada) para entender bien como funciona 
 
 ## Como correr el proyecto
 
-### Requisitos
-- Node.js v18+
-- MariaDB o MySQL
-- Apache2
+### En producción (Debian + Apache)
 
-### Pasos
+**Requisitos:** Node.js v18+, MariaDB, Apache2
 
-**1. Copiar el proyecto al servidor:**
+**1. Clonar el repositorio:**
 ```bash
-cp -r the-critic/ /var/www/the-critic
-```
-
-**2. Instalar dependencias:**
-```bash
+git clone https://github.com/Angel-jimenez-21/the-critic /var/www/the-critic
 cd /var/www/the-critic
 npm install
 ```
 
-**3. Crear la base de datos:**
+**2. Crear la base de datos:**
 ```sql
 CREATE DATABASE the_critic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'critic_user'@'localhost' IDENTIFIED BY 'critic2026';
@@ -56,7 +62,7 @@ GRANT ALL PRIVILEGES ON the_critic.* TO 'critic_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-**4. Configurar Apache2:**
+**3. Configurar Apache2:**
 ```bash
 sudo a2enmod proxy proxy_http
 sudo cp the-critic.conf /etc/apache2/sites-available/
@@ -64,12 +70,25 @@ sudo a2ensite the-critic.conf
 sudo systemctl reload apache2
 ```
 
-**5. Arrancar:**
+**4. Arrancar:**
 ```bash
 bash /var/www/the-critic/start.sh
 ```
 
-Las tablas se crean solas al arrancar por primera vez, no hay que importar ningun SQL.
+### En local (Windows / Mac — sin Apache)
+
+**Requisitos:** Node.js v18+, MariaDB
+
+```bash
+git clone https://github.com/Angel-jimenez-21/the-critic
+cd the-critic
+npm install
+DB_USER=root DB_PASSWORD=tu_password node server.js
+```
+
+Abrir en el navegador: `http://localhost:3000`
+
+> Las tablas se crean automáticamente al arrancar por primera vez. No hay que importar ningún SQL.
 
 ---
 
@@ -94,27 +113,31 @@ El servidor lee las credenciales de variables de entorno para no ponerlas direct
 
 ```
 the-critic/
-├── server.js          — todo el backend: API, sesiones, BD
-├── package.json       — dependencias
-├── start.sh           — script para arrancar el servidor
-├── the-critic.conf    — configuracion de Apache2
-├── index.html         — inicio
-├── videojuegos.html   — catalogo de juegos
-├── juego.html         — detalle de un juego con sus reseñas
-├── noticias.html      — lista de noticias
-├── noticia.html       — noticia completa
-├── login.html         — inicio de sesion
-├── register.html      — registro
-├── perfil.html        — perfil del usuario
-├── nosotros.html      — pagina del equipo
-├── terminos.html      — terminos y condiciones
-├── reset-password.html — restablecer contraseña
-├── admin.html         — panel de administracion
-├── css/               — estilos separados por pagina
+│
+├── server.js              — backend completo (MVC: Model + Controller + Router)
+├── package.json           — dependencias npm
+├── start.sh               — script para arrancar en producción
+├── the-critic.conf        — configuración de Apache2 (reverse proxy)
+│
+│── [VIEW — páginas HTML]
+├── index.html             — portada
+├── videojuegos.html       — catálogo de juegos
+├── juego.html             — detalle de juego y reseñas
+├── noticias.html          — lista de noticias
+├── noticia.html           — noticia completa
+├── login.html             — inicio de sesión
+├── register.html          — registro de cuenta
+├── perfil.html            — perfil del usuario
+├── admin.html             — panel de administración
+├── nosotros.html          — página del equipo
+├── terminos.html          — términos y condiciones
+├── reset-password.html    — restablecer contraseña
+│
+├── css/                   — estilos separados por página
 ├── js/
-│   ├── main.js        — logica del frontend
-│   └── admin.js       — logica del panel de admin
-└── assets/img/        — imagenes del sitio
+│   ├── main.js            — lógica del frontend (Fetch API)
+│   └── admin.js           — lógica del panel de admin
+└── assets/img/            — imágenes del sitio
 ```
 
 ---

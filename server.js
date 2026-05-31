@@ -7,6 +7,27 @@
 //   node server.js
 // En el servidor de debian se corre con las variables de entorno:
 //   DB_USER=critic_user DB_PASSWORD=critic2026 DB_NAME=the_critic node server.js
+//
+// ============================================================================
+// ARQUITECTURA MVC — separación de responsabilidades
+// ============================================================================
+//
+//  MODEL      → validaciones, seguridad, rate limiting, serializadores,
+//               helpers de BD, inicialización y seed de la base de datos.
+//               Todo lo relacionado con los datos y sus reglas de negocio.
+//
+//  VIEW       → archivos estáticos (HTML, CSS, JS, imágenes).
+//               El servidor los sirve directamente desde disco.
+//               Están en las carpetas: /, css/, js/, assets/
+//
+//  CONTROLLER → handlers de cada endpoint de la API (/api/*).
+//               Reciben la petición, llaman al Model y devuelven la respuesta.
+//               Organizados por dominio: auth, perfil, juegos, reseñas, admin.
+//
+//  ROUTER     → enrutador principal al final del archivo.
+//               Lee la URL entrante y delega al Controller correcto.
+//
+// ============================================================================
 
 // --- modulos que trae Node de serie, no hay que instalar nada ----------------
 const http   = require('node:http');   // para crear el servidor HTTP
@@ -66,7 +87,8 @@ function nowMysql() {
 }
 
 // ============================================================================
-// UTILIDADES DE FECHA
+// UTILIDADES COMPARTIDAS — FECHA
+// (usadas por Models y Controllers para formatear fechas)
 // ============================================================================
 
 // suma dias a una fecha y devuelve un Date nuevo (se usa para calcular expiracion de sesion)
@@ -85,7 +107,7 @@ function dateLabel(dateInput) {
 }
 
 // ============================================================================
-// UTILIDADES DE TEXTO
+// UTILIDADES COMPARTIDAS — TEXTO
 // ============================================================================
 
 // quita espacios al principio y al final, y convierte null o undefined a string vacio
@@ -95,7 +117,9 @@ function normalizeText(value) {
 }
 
 // ============================================================================
-// VALIDACIONES — comprueban que los datos del usuario sean correctos
+// MODEL — VALIDACIONES
+// Comprueban que los datos del usuario sean correctos antes de procesarlos.
+// Devuelven un mensaje de error (string) o null si todo está bien.
 // ============================================================================
 
 // verifica que la contraseña cumpla los requisitos de seguridad
@@ -145,8 +169,10 @@ function validateEmail(email) {
 }
 
 // ============================================================================
-// RATE LIMITING — limita cuantos intentos puede hacer una IP en cierto tiempo
-// esto evita ataques de fuerza bruta (que alguien pruebe mil contraseñas)
+// MODEL — RATE LIMITING
+// Limita cuántos intentos puede hacer una IP en cierto tiempo.
+// Evita ataques de fuerza bruta (probar miles de contraseñas).
+// Máximo: 10 intentos de login / 5 de registro por ventana de tiempo.
 // ============================================================================
 
 // guarda los intentos fallidos: clave = "accion:ip", valor = { count, firstAttempt }
@@ -208,7 +234,9 @@ function clearRateLimit(ip, action) {
 }
 
 // ============================================================================
-// SEGURIDAD — manejo de contraseñas
+// MODEL — SEGURIDAD (manejo de contraseñas)
+// hashPassword : genera hash scrypt + salt aleatorio → nunca se guarda el texto plano.
+// verifyPassword: compara usando timingSafeEqual → resistente a timing attacks.
 // ============================================================================
 
 // genera un hash seguro de la contraseña usando scrypt + un salt aleatorio
@@ -242,7 +270,9 @@ function verifyPassword(password, storedHash) {
 }
 
 // ============================================================================
-// UTILIDADES HTTP
+// UTILIDADES COMPARTIDAS — HTTP
+// Helpers para leer y escribir peticiones/respuestas HTTP.
+// Usados por todos los Controllers.
 // ============================================================================
 
 // convierte el header Cookie (string) en un objeto clave-valor para poder leerlo facil
@@ -319,8 +349,9 @@ function readJsonBody(request) {
 }
 
 // ============================================================================
-// SERIALIZADORES — convierten filas de la BD al formato que usa la API/frontend
-// esto es importante para no exponer campos sensibles como password_hash
+// MODEL — SERIALIZADORES
+// Convierten filas de la BD al formato JSON que usa el frontend.
+// IMPORTANTE: nunca exponen campos sensibles como password_hash o salt.
 // ============================================================================
 
 // convierte un usuario de la BD al objeto que ve el frontend
@@ -390,7 +421,8 @@ function serializeNews(article) {
 }
 
 // ============================================================================
-// COOKIES DE SESION
+// MODEL — COOKIES DE SESIÓN
+// Genera y limpia la cookie HttpOnly que identifica la sesión del usuario.
 // ============================================================================
 
 // arma el string del header Set-Cookie para cuando el usuario inicia sesion
@@ -408,7 +440,8 @@ function clearSessionCookie() {
 }
 
 // ============================================================================
-// HELPERS DE CONSULTA A LA BD — wrappers sobre db.execute para simplificar
+// MODEL — HELPERS DE CONSULTA A LA BD
+// Wrappers sobre db.execute para simplificar las consultas frecuentes.
 // ============================================================================
 
 // ejecuta una consulta y devuelve solo la primera fila (o null si no hay resultados)
@@ -425,8 +458,9 @@ async function queryAll(sql, params = []) {
 }
 
 // ============================================================================
-// INICIALIZACION DE LA BASE DE DATOS
-// crea las tablas si no existen, aplica migraciones y carga datos de ejemplo
+// MODEL — BASE DE DATOS (inicialización y seed)
+// Crea las tablas si no existen, aplica migraciones y carga datos de ejemplo.
+// Tablas: users, sessions, games, news, reviews, reset_tokens
 // ============================================================================
 
 async function initDatabase() {
@@ -744,7 +778,8 @@ async function seedDatabase() {
 }
 
 // ============================================================================
-// HELPERS DE BASE DE DATOS
+// MODEL — HELPERS DE BASE DE DATOS (sesiones y búsquedas frecuentes)
+// Funciones reutilizables para buscar usuarios, juegos y manejar sesiones.
 // ============================================================================
 
 // elimina las sesiones que ya expiraron — se llama antes de cada verificacion de sesion
@@ -829,8 +864,11 @@ async function createSession(userId) {
 }
 
 // ============================================================================
-// ARCHIVOS ESTATICOS
-// sirve los HTML, CSS, JS e imagenes directamente desde el disco
+// VIEW — ARCHIVOS ESTÁTICOS
+// Sirve los HTML, CSS, JS e imágenes directamente desde el disco.
+// Las vistas del proyecto son: index.html, login.html, register.html,
+// videojuegos.html, juego.html, noticias.html, noticia.html,
+// perfil.html, admin.html, nosotros.html, terminos.html, reset-password.html
 // ============================================================================
 
 // mapa de extensiones a tipos MIME — el browser necesita saber que tipo de archivo le mandan
@@ -882,8 +920,10 @@ function serveStaticFile(request, response, pathname) {
 }
 
 // ============================================================================
-// HANDLERS DE LA API
-// cada funcion maneja un endpoint — recibe (request, response) y manda la respuesta
+// CONTROLLER — AUTENTICACIÓN
+// Maneja registro, login, logout y verificación de sesión.
+// Endpoints: POST /api/auth/register, POST /api/auth/login,
+//            POST /api/auth/logout,   GET  /api/session
 // ============================================================================
 
 // POST /api/auth/register — crea una cuenta nueva y abre sesion automaticamente
@@ -1023,6 +1063,12 @@ async function handleSession(request, response) {
   sendJson(response, 200, { user: serializeUser(user) });
 }
 
+// ============================================================================
+// CONTROLLER — PERFIL DE USUARIO
+// Endpoints: GET /api/profile, PATCH /api/profile/email,
+//            PATCH /api/profile/password, PATCH /api/profile/avatar
+// ============================================================================
+
 // GET /api/profile — devuelve los datos del usuario logueado y sus reseñas
 async function handleProfile(request, response) {
   const user = await getSessionUser(request);
@@ -1140,6 +1186,12 @@ async function handleProfileAvatarUpdate(request, response) {
   const updatedUser = await findUserById(user.id);
   sendJson(response, 200, { user: serializeUser(updatedUser) });
 }
+
+// ============================================================================
+// CONTROLLER — JUEGOS Y RESEÑAS
+// Endpoints: GET  /api/games, GET /api/games/:slug/reviews,
+//            POST /api/reviews
+// ============================================================================
 
 // GET /api/games — lista juegos con filtros opcionales: search, genre, platform, rating
 // usa parametros en la URL tipo /api/games?genre=RPG&platform=PC
@@ -1340,7 +1392,10 @@ async function handleCreateReview(request, response) {
 }
 
 // ============================================================================
-// PANEL DE ADMIN — endpoints protegidos que requieren is_admin = 1
+// CONTROLLER — PANEL DE ADMINISTRACIÓN
+// Endpoints protegidos — requieren is_admin = 1 en la sesión activa.
+// Juegos:   GET/POST /api/admin/games, PUT/DELETE /api/admin/games/:id
+// Noticias: GET/POST /api/admin/news,  PUT/DELETE /api/admin/news/:id
 // ============================================================================
 
 // convierte un titulo en slug para la URL: "Hollow Knight" → "hollow-knight"
@@ -1539,7 +1594,8 @@ async function handleAdminDeleteNews(request, response, id) {
 }
 
 // ============================================================================
-// HOME
+// CONTROLLER — HOME Y NOTICIAS
+// Endpoints: GET /api/home, GET /api/news, GET /api/news/:slug
 // ============================================================================
 
 // GET /api/home — datos para la portada: los 4 juegos mas reseñados, 3 reseñas recientes y 3 noticias
@@ -1636,8 +1692,10 @@ async function handleNewsDetail(response, slug) {
 }
 
 // ============================================================================
-// ENRUTADOR PRINCIPAL
-// todas las peticiones pasan por aqui primero
+// CONTROLLER — RECUPERACIÓN DE CONTRASEÑA
+// Endpoints: POST /api/auth/forgot-password, POST /api/auth/reset-password
+// ============================================================================
+
 // POST /api/auth/forgot-password — recibe un email, genera un token y manda el correo
 // si el email no existe responde igual (no queremos confirmar si alguien esta registrado o no)
 async function handleForgotPassword(request, response) {
@@ -1753,8 +1811,10 @@ async function handleResetPassword(request, response) {
   sendJson(response, 200, { ok: true });
 }
 
-// si la ruta empieza con /api/ → va a un handler de la API
-// cualquier otra cosa → se sirve como archivo estatico
+// ============================================================================
+// ROUTER — ENRUTADOR PRINCIPAL
+// Lee la URL y el método HTTP de cada petición entrante y delega al
+// Controller correspondiente. Si la ruta no es /api/* sirve archivos estáticos.
 // ============================================================================
 
 const server = http.createServer(async (request, response) => {
